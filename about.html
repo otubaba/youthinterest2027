@@ -10,33 +10,42 @@
 <body class="flex flex-col min-h-screen">
     
     <header class="fixed top-0 left-0 w-full text-gray-600 body-font shadow-md bg-white z-50">
-  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-    
-    <!-- NAV -->
-    <nav class="flex lg:w-2/5 flex-wrap items-center md:ml-auto space-x-2">
-      <a class="px-4 py-2 text-lg font-bold rounded-lg transition duration-300 hover:bg-gray-500 hover:text-white" href="index.html">Home</a>
-      <a class="px-4 py-2 text-lg font-bold rounded-lg transition duration-300 hover:bg-gray-500 hover:text-white" href="#">About</a>
-      <a class="px-4 py-2 text-lg font-bold rounded-lg transition duration-300 hover:bg-gray-500 hover:text-white" href="empowerments.html">Empowerments</a>
-      <a class="px-4 py-2 text-lg font-bold rounded-lg transition duration-300 hover:bg-gray-500 hover:text-white" href="vision.html">The Vision</a>
-    </nav>
+  <div class="container mx-auto flex flex-wrap p-5 items-center justify-between">
 
     <!-- LOGO -->
-    <a class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 justify-center mb-4 md:mb-0">
+    <a class="flex items-center text-gray-900">
       <img src="images/1.jpeg" alt="" class="h-12 w-auto">
     </a>
 
-    <!-- BUTTON -->
-    <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
-      <button class="inline-flex items-center bg-gray-100 border-0 py-2 px-4 focus:outline-none hover:bg-gray-500 hover:text-white rounded-lg text-base mt-4 md:mt-0 transition duration-300">
-        <a href="join.html">Join Us</a>
-        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-          <path d="M5 12h14M12 5l7 7-7 7"></path>
-        </svg>
-      </button>
+    <!-- HAMBURGER (mobile only) -->
+    <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+
+    <!-- NAV + BUTTON -->
+    <div id="menu" class="hidden w-full md:flex md:items-center md:w-auto">
+
+      <!-- NAV -->
+      <nav class="flex flex-col md:flex-row md:ml-auto md:space-x-2 mt-4 md:mt-0">
+        <a class="px-4 py-2 text-lg font-bold rounded-lg hover:bg-gray-500 hover:text-white" href="index.html">Home</a>
+        <a class="px-4 py-2 text-lg font-bold rounded-lg hover:bg-gray-500 hover:text-white" href="about.html">About</a>
+        <a class="px-4 py-2 text-lg font-bold rounded-lg hover:bg-gray-500 hover:text-white" href="empowerments.html">Empowerments</a>
+        <a class="px-4 py-2 text-lg font-bold rounded-lg hover:bg-gray-500 hover:text-white" href="vision.html">The Vision</a>
+      </nav>
+
+      <!-- BUTTON -->
+      <div class="mt-4 md:mt-0 md:ml-4">
+        <a href="join.html" class="inline-flex items-center bg-gray-100 px-4 py-2 rounded-lg hover:bg-gray-500 hover:text-white transition">
+          Join Us
+        </a>
+      </div>
+
     </div>
 
   </div>
-    </header>
+</header>
 
     <main class="flex-grow pt-[8rem] sm:pt-[10rem] md:pt-[6rem] lg:pt-[8rem]">
 
@@ -217,6 +226,25 @@
     }
   });
 </script>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const menu = document.getElementById('menu');
+  const navLinkss = document.querySelectorAll('#menu a');
+
+  // Toggle menu when hamburger is clicked
+  menuBtn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+
+  // Hide menu when a link is clicked (mobile UX)
+  navLinkss.forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+    });
+  });
+</script>
+
 <script src="https://kit.fontawesome.com/c27acce84b.js" ></script>
 </body>
 </html>
